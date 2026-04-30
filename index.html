@@ -80,7 +80,7 @@
             font-size: 1.15rem;
             color: var(--text-muted);
             max-width: 650px;
-            margin-bottom: 40px;
+            margin: 0 auto 40px auto; /* AJUSTE: margin auto adicionado para forçar o alinhamento central */
         }
 
         .btn {
@@ -240,74 +240,173 @@
             .hero h1 { font-size: 2.5rem; }
             .glass-panel { padding: 25px; }
         }
+
+        /* --- ESTILOS ADICIONADOS PARA A TROCA DE IDIOMAS --- */
+        .lang-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+            background: var(--card-bg);
+            padding: 5px 10px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 5px 10px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .lang-btn.active {
+            background: var(--accent-cyan);
+            color: var(--bg-dark);
+        }
+
+        /* Esconder o idioma não selecionado */
+        [lang="es"] { display: none; }
     </style>
 </head>
 <body>
+
+    <div class="lang-switcher">
+        <button class="lang-btn active" onclick="switchLang('pt')">PT</button>
+        <button class="lang-btn" onclick="switchLang('es')">ES</button>
+    </div>
 
     <div class="container">
         <section class="hero">
             <div class="profile-img-container">
                 <img src="foto_perfil.jpg" alt="Luciano Rodrigues" class="profile-img" onerror="this.style.backgroundColor='#1e293b'">
             </div>
-            <h1>Luciano Rodrigues <br><span class="text-gradient">Automação & Infraestrutura</span></h1>
-            <p>Construo ecossistemas digitais que eliminam o trabalho manual. De servidores VPS à automação de vendas para escalar o seu negócio.</p>
+            
+            <div lang="pt" style="width: 100%;">
+                <h1>Luciano Rodrigues <br><span class="text-gradient">Automação & Infraestrutura</span></h1>
+                <p>Construo ecossistemas digitais que eliminam o trabalho manual. De servidores VPS à automação de vendas para escalar o seu negócio.</p>
+            </div>
+            <div lang="es" style="width: 100%;">
+                <h1>Luciano Rodrigues <br><span class="text-gradient">Automatización e Infraestructura</span></h1>
+                <p>Construyo ecosistemas digitales que eliminan el trabajo manual. Desde servidores VPS hasta la automatización de ventas para escalar su negocio.</p>
+            </div>
+
             <a href="#portfolio" class="btn">
-                <i class="fas fa-rocket"></i> Ver Portfólio em Ação
+                <i class="fas fa-rocket"></i> 
+                <span lang="pt">Ver Portfólio em Ação</span>
+                <span lang="es">Ver Portfolio en Acción</span>
             </a>
         </section>
 
         <section id="servicos">
-            <h2 class="section-title">Soluções Digitais</h2>
+            <h2 class="section-title">
+                <span lang="pt">Soluções Digitais</span>
+                <span lang="es">Soluciones Digitales</span>
+            </h2>
             <div class="projects-grid">
                 <div class="glass-panel project-card">
                     <i class="fas fa-robot project-icon"></i>
-                    <h3>Robô de Ofertas Automáticas</h3>
-                    <p>Sistema que monitora "achadinhos" e publica automaticamente em grupos e redes sociais 24h por dia.</p>
+                    <div lang="pt">
+                        <h3>Robô de Ofertas Automáticas</h3>
+                        <p>Sistema que monitora "achadinhos" e publica automaticamente em grupos e redes sociais 24h por dia.</p>
+                    </div>
+                    <div lang="es">
+                        <h3>Robot de Ofertas Automáticas</h3>
+                        <p>Sistema que monitoriza "ofertas" y publica automáticamente en grupos y redes sociales las 24h del día.</p>
+                    </div>
                     <div class="tags"><span class="tag">Vendas 24h</span><span class="tag">n8n</span></div>
                 </div>
                 <div class="glass-panel project-card">
                     <i class="fas fa-comments project-icon"></i>
-                    <h3>Atendimento Inteligente</h3>
-                    <p>Chatbots naturais que atendem clientes no WhatsApp instantaneamente, organizando toda a demanda.</p>
+                    <div lang="pt">
+                        <h3>Atendimento Inteligente</h3>
+                        <p>Chatbots naturais que atendem clientes no WhatsApp instantaneamente, organizando toda a demanda.</p>
+                    </div>
+                    <div lang="es">
+                        <h3>Atención Inteligente</h3>
+                        <p>Chatbots naturales que atienden a clientes en WhatsApp al instante, organizando toda la demanda.</p>
+                    </div>
                     <div class="tags"><span class="tag">Evolution API</span><span class="tag">Chatwoot</span></div>
                 </div>
                 <div class="glass-panel project-card">
                     <i class="fas fa-sparkles project-icon"></i>
-                    <h3>Máquinas de Captação</h3>
-                    <p>Criação de landing pages e sites profissionais otimizados para converter visitantes em clientes reais.</p>
+                    <div lang="pt">
+                        <h3>Máquinas de Captação</h3>
+                        <p>Criação de landing pages e sites profissionais otimizados para converter visitantes em clientes reais.</p>
+                    </div>
+                    <div lang="es">
+                        <h3>Máquinas de Captación</h3>
+                        <p>Creación de landing pages y sitios profesionales optimizados para convertir visitantes en clientes reales.</p>
+                    </div>
                     <div class="tags"><span class="tag">Web Design</span><span class="tag">UI/UX</span></div>
                 </div>
             </div>
         </section>
 
         <section id="portfolio">
-            <h2 class="section-title">Trabalhos Realizados</h2>
+            <h2 class="section-title">
+                <span lang="pt">Trabalhos Realizados</span>
+                <span lang="es">Trabajos Realizados</span>
+            </h2>
             <div class="projects-grid">
                 <div class="glass-panel project-card">
                     <i class="fas fa-project-diagram project-icon"></i>
-                    <h3>Lógica de Automação Shopee</h3>
-                    <p>Fluxo automatizado que processa APIs de afiliados, formata imagens e distribui conteúdos estrategicamente.</p>
-                    <a href="#" class="btn-outline"><i class="fas fa-eye"></i> Ver Estrutura do Fluxo</a>
+                    <div lang="pt">
+                        <h3>Lógica de Automação Shopee</h3>
+                        <p>Fluxo automatizado que processa APIs de afiliados, formata imagens e distribui conteúdos estrategicamente.</p>
+                        <a href="#" class="btn-outline"><i class="fas fa-eye"></i> Ver Estrutura do Fluxo</a>
+                    </div>
+                    <div lang="es">
+                        <h3>Lógica de Automatización Shopee</h3>
+                        <p>Flujo automatizado que procesa APIs de afiliados, formatea imágenes y distribuye contenidos estratégicamente.</p>
+                        <a href="#" class="btn-outline"><i class="fas fa-eye"></i> Ver Estructura del Flujo</a>
+                    </div>
                 </div>
                 <div class="glass-panel project-card">
                     <i class="fab fa-whatsapp project-icon"></i>
-                    <h3>Demonstração de Chatbot</h3>
-                    <p>Integração ativa entre Evolution API e n8n. Teste agora a velocidade de resposta da minha automação.</p>
-                    <a href="https://wa.me/5562981358513?text=Quero+testar+a+automacao" class="btn-outline"><i class="fab fa-whatsapp"></i> Testar no WhatsApp</a>
+                    <div lang="pt">
+                        <h3>Demonstração de Chatbot</h3>
+                        <p>Integração ativa entre Evolution API e n8n. Teste agora a velocidade de resposta da minha automação.</p>
+                        <a href="https://wa.me/5562981358513?text=Quero+testar+a+automacao" class="btn-outline"><i class="fab fa-whatsapp"></i> Testar no WhatsApp</a>
+                    </div>
+                    <div lang="es">
+                        <h3>Demostración de Chatbot</h3>
+                        <p>Integración activa entre Evolution API y n8n. Pruebe ahora la velocidad de respuesta de mi automatización.</p>
+                        <a href="https://wa.me/5562981358513?text=Quero+testar+a+automacao" class="btn-outline"><i class="fab fa-whatsapp"></i> Probar en WhatsApp</a>
+                    </div>
                 </div>
                 <div class="glass-panel project-card">
                     <i class="fas fa-server project-icon"></i>
-                    <h3>Infraestrutura Gerenciada</h3>
-                    <p>Este site e todos os meus sistemas rodam em uma VPS Linux (Hostinger) gerenciada via Coolify e Docker.</p>
+                    <div lang="pt">
+                        <h3>Infraestrutura Gerenciada</h3>
+                        <p>Este site e todos os meus sistemas rodam em uma VPS Linux (Hostinger) gerenciada via Coolify e Docker.</p>
+                    </div>
+                    <div lang="es">
+                        <h3>Infraestructura Gestionada</h3>
+                        <p>Este sitio y todos mis sistemas funcionan en una VPS Linux (Hostinger) gestionada vía Coolify y Docker.</p>
+                    </div>
                     <div class="tag" style="display:inline-block">Status: Online</div>
                 </div>
             </div>
         </section>
 
         <section id="stack">
-            <h2 class="section-title">Stack Tecnológica & Infra</h2>
+            <h2 class="section-title">
+                <span lang="pt">Stack Tecnológica & Infra</span>
+                <span lang="es">Stack Tecnológica e Infraestructura</span>
+            </h2>
             <div class="tech-grid">
-                <div class="tech-item"><i class="fas fa-server"></i><div>Gestão de VPS Linux</div></div>
+                <div class="tech-item"><i class="fas fa-server"></i>
+                    <div lang="pt">Gestão de VPS Linux</div>
+                    <div lang="es">Gestión de VPS Linux</div>
+                </div>
                 <div class="tech-item"><i class="fas fa-cubes"></i><div>Coolify / Docker</div></div>
                 <div class="tech-item"><i class="fas fa-project-diagram"></i><div>n8n</div></div>
                 <div class="tech-item"><i class="fas fa-plug"></i><div>APIs RESTful</div></div>
@@ -316,29 +415,53 @@
         </section>
 
         <section id="certificados">
-            <h2 class="section-title">Certificações Técnicas</h2>
+            <h2 class="section-title">
+                <span lang="pt">Certificações Técnicas</span>
+                <span lang="es">Certificaciones Técnicas</span>
+            </h2>
             <div class="projects-grid">
                 <div class="glass-panel project-card">
-                    <h3 style="color: var(--accent-cyan); margin-bottom: 20px;"><i class="fas fa-laptop-code"></i> Desenvolvimento & Dados</h3>
+                    <h3 style="color: var(--accent-cyan); margin-bottom: 20px;"><i class="fas fa-laptop-code"></i> 
+                        <span lang="pt">Desenvolvimento & Dados</span>
+                        <span lang="es">Desarrollo y Datos</span>
+                    </h3>
                     <ul class="cert-list">
                         <li>Basic FrontEnd <span class="cert-meta">Descomplica Faculdade Digital - 240h</span></li>
                         <li>Python para Data Science <span class="cert-meta">Alura / Oracle Next Education - 10h</span></li>
-                        <li>Introdução ao Desenvolvimento Web <span class="cert-meta">Descomplica - 10h</span></li>
+                        <li>
+                            <span lang="pt">Introdução ao Desenvolvimento Web</span>
+                            <span lang="es">Introducción al Desarrollo Web</span>
+                            <span class="cert-meta">Descomplica - 10h</span>
+                        </li>
                     </ul>
                 </div>
                 <div class="glass-panel project-card">
-                    <h3 style="color: var(--accent-cyan); margin-bottom: 20px;"><i class="fas fa-brain"></i> Inteligência Artificial</h3>
+                    <h3 style="color: var(--accent-cyan); margin-bottom: 20px;"><i class="fas fa-brain"></i> 
+                        <span lang="pt">Inteligência Artificial</span>
+                        <span lang="es">Inteligencia Artificial</span>
+                    </h3>
                     <ul class="cert-list">
                         <li>ChatGPT: otimizando resultados <span class="cert-meta">Alura / Oracle - 8h</span></li>
-                        <li>Aplicações de IA <span class="cert-meta">Descomplica - 10h</span></li>
+                        <li>
+                            <span lang="pt">Aplicações de IA</span>
+                            <span lang="es">Aplicaciones de IA</span>
+                            <span class="cert-meta">Descomplica - 10h</span>
+                        </li>
                     </ul>
                 </div>
                 <div class="glass-panel project-card">
-                    <h3 style="color: var(--accent-cyan); margin-bottom: 20px;"><i class="fas fa-tools"></i> Gestão & Produtividade</h3>
+                    <h3 style="color: var(--accent-cyan); margin-bottom: 20px;"><i class="fas fa-tools"></i> 
+                        <span lang="pt">Gestão & Produtividade</span>
+                        <span lang="es">Gestión y Productividad</span>
+                    </h3>
                     <ul class="cert-list">
                         <li>Excel Avançado <span class="cert-meta">Fundação Bradesco - 20h</span></li>
                         <li>Excel Básico <span class="cert-meta">Descomplica - 30h</span></li>
-                        <li>Hábitos e Produtividade <span class="cert-meta">Alura / Oracle - 6h</span></li>
+                        <li>
+                            <span lang="pt">Hábitos e Produtividade</span>
+                            <span lang="es">Hábitos y Productividad</span>
+                            <span class="cert-meta">Alura / Oracle - 6h</span>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -346,35 +469,57 @@
 
         <section id="curriculo" style="background: rgba(0, 0, 0, 0.2); border-radius: 20px; padding: 50px 30px; border: 1px solid var(--border-color);">
             <div style="text-align: center; margin-bottom: 40px;">
-                <h2 style="font-size: 2rem;">Perfil Profissional & CV</h2>
-                <p style="color: var(--text-muted);">Disponível para oportunidades na Europa (Espanha) e trabalho remoto.</p>
+                <h2 style="font-size: 2rem;">
+                    <span lang="pt">Perfil Profissional & CV</span>
+                    <span lang="es">Perfil Profesional y CV</span>
+                </h2>
+                <p style="color: var(--text-muted);">
+                    <span lang="pt">Disponível para oportunidades na Europa (Espanha) e trabalho remoto.</span>
+                    <span lang="es">Disponible para oportunidades en Europa (España) y trabajo remoto.</span>
+                </p>
             </div>
             <div style="display: flex; flex-wrap: wrap; gap: 30px;">
                 <div style="flex: 2; min-width: 300px;">
-                    <h3 style="color: var(--accent-cyan); margin-bottom: 20px;"><i class="fas fa-briefcase"></i> Experiência</h3>
+                    <h3 style="color: var(--accent-cyan); margin-bottom: 20px;"><i class="fas fa-briefcase"></i> 
+                        <span lang="pt">Experiência</span>
+                        <span lang="es">Experiencia</span>
+                    </h3>
                     <div style="border-left: 2px solid var(--accent-purple); padding-left: 20px; margin-bottom: 20px;">
-                        <h4>Especialista em Automação</h4>
+                        <h4 lang="pt">Especialista em Automação</h4>
+                        <h4 lang="es">Especialista en Automatización</h4>
                         <p style="color: var(--accent-cyan); font-size: 0.9rem;">Freelance | 2024 - Atual</p>
-                        <p style="color: var(--text-muted);">Desenvolvimento de soluções com n8n e gestão de infraestrutura em VPS.</p>
+                        <p style="color: var(--text-muted);" lang="pt">Desenvolvimento de soluções com n8n e gestão de infraestrutura em VPS.</p>
+                        <p style="color: var(--text-muted);" lang="es">Desarrollo de soluciones con n8n y gestión de infraestructura en VPS.</p>
                     </div>
                     <div style="border-left: 2px solid rgba(255,255,255,0.2); padding-left: 20px;">
-                        <h4>Segurança e Gestão Operacional</h4>
-                        <p style="color: var(--text-muted); font-size: 0.9rem;">Logística e Conformidade</p>
-                        <p style="color: var(--text-muted);">Foco em resolução de problemas e conformidade de processos sob pressão.</p>
+                        <h4 lang="pt">Segurança e Gestão Operacional</h4>
+                        <h4 lang="es">Seguridad y Gestión Operativa</h4>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;" lang="pt">Logística e Conformidade</p>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;" lang="es">Logística y Conformidad</p>
+                        <p style="color: var(--text-muted);" lang="pt">Foco em resolução de problemas e conformidade de processos sob pressão.</p>
+                        <p style="color: var(--text-muted);" lang="es">Enfoque en resolución de problemas y conformidad de procesos bajo presión.</p>
                     </div>
                 </div>
                 <div style="flex: 1; min-width: 250px;">
-                    <h3 style="color: var(--accent-cyan); margin-bottom: 20px;"><i class="fas fa-graduation-cap"></i> Formação</h3>
+                    <h3 style="color: var(--accent-cyan); margin-bottom: 20px;"><i class="fas fa-graduation-cap"></i> 
+                        <span lang="pt">Formação</span>
+                        <span lang="es">Formación</span>
+                    </h3>
                     <div class="glass-panel" style="padding: 15px; margin-bottom: 15px;">
-                        <h4 style="font-size: 0.95rem;">Análise e Desenvolvimento de Sistemas</h4>
+                        <h4 style="font-size: 0.95rem;" lang="pt">Análise e Desenvolvimento de Sistemas</h4>
+                        <h4 style="font-size: 0.95rem;" lang="es">Análisis y Desarrollo de Sistemas</h4>
                         <p style="color: var(--text-muted); font-size: 0.8rem;">Descomplica Faculdade Digital</p>
                     </div>
                     <div class="glass-panel" style="padding: 15px; margin-bottom: 25px;">
-                        <h4 style="font-size: 0.95rem;">Técnico em Segurança no Trabalho</h4>
-                        <p style="color: var(--text-muted); font-size: 0.8rem;">SENAI Vila Canaã (1.440 horas)</p>
+                        <h4 style="font-size: 0.95rem;" lang="pt">Técnico em Segurança no Trabalho</h4>
+                        <h4 style="font-size: 0.95rem;" lang="es">Técnico en Seguridad Laboral</h4>
+                        <p style="color: var(--text-muted); font-size: 0.8rem;" lang="pt">SENAI Vila Canaã (1.440 horas)</p>
+                        <p style="color: var(--text-muted); font-size: 0.8rem;" lang="es">SENAI Vila Canaã (1.440 horas)</p>
                     </div>
                     <a href="curriculo_luciano_foto.pdf" download="CV_Luciano_Oliveira_Especialista.pdf" class="btn" style="width: 100%; justify-content: center;">
-                        <i class="fas fa-file-pdf"></i> Descargar CV (Con Foto)
+                        <i class="fas fa-file-pdf"></i>
+                        <span lang="pt">Descargar CV (Con Foto)</span>
+                        <span lang="es">Descargar CV (Con Foto)</span>
                     </a>
                 </div>
             </div>
@@ -383,16 +528,36 @@
         <section id="sobre">
             <div class="glass-panel" style="display: flex; flex-wrap: wrap; gap: 30px; align-items: center;">
                 <div style="flex: 1; min-width: 300px;">
-                    <h2>Além do Código: <span class="text-gradient">Visão Sistêmica</span></h2>
-                    <p style="color: var(--text-muted); margin-bottom: 15px;">A minha base em Segurança no Trabalho ensinou-me que processos precisam de ser seguros e à prova de falhas. Aplico esse rigor em cada automação que desenvolvo.</p>
-                    <p style="color: var(--text-muted);">Entendo que tecnologia só tem valor se resolver um problema real de negócio ou de tempo.</p>
+                    <h2>
+                        <span lang="pt">Além do Código:</span>
+                        <span lang="es">Más Allá del Código:</span>
+                        <span class="text-gradient" lang="pt">Visão Sistêmica</span>
+                        <span class="text-gradient" lang="es">Visión Sistémica</span>
+                    </h2>
+                    <div lang="pt">
+                        <p style="color: var(--text-muted); margin-bottom: 15px;">A minha base em Segurança no Trabalho ensinou-me que processos precisam de ser seguros e à prova de falhas. Aplico esse rigor em cada automação que desenvolvo.</p>
+                        <p style="color: var(--text-muted);">Entendo que tecnologia só tem valor se resolver um problema real de negócio ou de tempo.</p>
+                    </div>
+                    <div lang="es">
+                        <p style="color: var(--text-muted); margin-bottom: 15px;">Mi base en Seguridad Laboral me enseñó que los procesos deben ser seguros y a prueba de fallos. Aplico este rigor en cada automatización que desarrollo.</p>
+                        <p style="color: var(--text-muted);">Entiendo que la tecnología solo tiene valor si resuelve un problema real de negocio o de tiempo.</p>
+                    </div>
                 </div>
                 <div style="flex: 1; min-width: 300px; background: rgba(0,0,0,0.2); padding: 25px; border-radius: 15px;">
                     <h4 style="color: var(--accent-cyan); margin-bottom: 10px;">Idiomas</h4>
                     <ul style="list-style: none; color: var(--text-muted); font-size: 0.9rem;">
-                        <li><i class="fas fa-check-circle" style="color: var(--accent-purple); margin-right: 10px;"></i> Espanhol (Avançado)</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--accent-purple); margin-right: 10px;"></i> Inglês (Leitura Técnica)</li>
-                        <li><i class="fas fa-check-circle" style="color: var(--accent-purple); margin-right: 10px;"></i> Italiano (Iniciante)</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--accent-purple); margin-right: 10px;"></i>
+                            <span lang="pt">Espanhol </span>
+                            <span lang="es">Español </span>
+                        </li>
+                        <li><i class="fas fa-check-circle" style="color: var(--accent-purple); margin-right: 10px;"></i>
+                            <span lang="pt">Inglês </span>
+                            <span lang="es">Inglés </span>
+                        </li>
+                        <li><i class="fas fa-check-circle" style="color: var(--accent-purple); margin-right: 10px;"></i>
+                            <span lang="pt">Português </span>
+                            <span lang="es">Português </span>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -400,8 +565,30 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 Luciano Rodrigues de Oliveira. Site hospedado em infraestrutura própria (VPS Linux).</p>
+        <p>&copy; 2026 Luciano Rodrigues de Oliveira. 
+            <span lang="pt">Site hospedado em infraestrutura própria (VPS Linux).</span>
+            <span lang="es">Sitio alojado en infraestructura propia (VPS Linux).</span>
+        </p>
     </footer>
 
+    <script>
+        function switchLang(lang) {
+            // Atualiza botões
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Troca os textos em bloco (divs, h4, etc)
+            document.querySelectorAll('div[lang], h4[lang], p[lang]').forEach(el => {
+                el.style.display = (el.getAttribute('lang') === lang) ? 'block' : 'none';
+            });
+
+            // Troca os textos em linha (spans dentro de botões/títulos)
+            document.querySelectorAll('span[lang]').forEach(el => {
+                el.style.display = (el.getAttribute('lang') === lang) ? 'inline' : 'none';
+            });
+        }
+    </script>
 </body>
 </html>
